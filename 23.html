@@ -1,0 +1,60 @@
+<html>
+<head>
+<style type= "text/css" >
+a:link, a:visited 
+ {
+  display:block;
+  text-align: center;
+  border-style: solid;
+  border-width: 5px;
+  border-color: transparent;
+  }
+a:hover {border-color: gray;}
+
+div
+{
+position:absolute;
+left:50%;
+top:50%;
+clip:rect(10px 30% 30% 10px);
+background-color: #00ffff;
+width:200px;
+height:120px;
+overflow: scroll; <!--anther word can be used here: hidden.-->
+}  
+
+img.top {vertical-align: text-top; z-index: -1; }
+img.bottom {vertical-align: text-bottom;}
+img.middle {vertical-align: middle; z-index: -1; }
+img.x 
+{
+position: absolute;
+top: 0px;
+left: 0px;
+z-index: -1;
+}
+
+
+</style>
+</head>
+
+<body>
+<a href="#">AAA</a>
+<a href="#">BBB</a>
+<a href="#">CCC</a>
+
+<div>
+  womengadgja;dgkjad;kgjeoigja;dlkgjeaig;;adghei;g
+  ha;lgkeh;ka;rrrrrrrrrrrrrrrrrrrrrrrrrrrhaoieghoierghq[woeig
+  hoqwiehgo[eghjfgsdjgduisa;egjawepgh;kangaeihg;dslakghe;igh;agh
+</div>
+
+<p> In this sentence, the picture would <img class= "top" src= "D:\Personal\Pictures\33_22538_23f313f92505089.jpg" alt= "pictures" /> show in the top. </p>
+<img class= "x" src= "D:\Personal\Pictures\33_22538_23f313f92505089.jpg" />
+<p> In this sentence, the picture would <img class= "bottom" src= "D:\Personal\Pictures\33_22538_23f313f92505089.jpg" alt= "pictures" /> show in the bottom. </p>
+<p> In this sentence, the picture would <img class= "middle" src= "D:\Personal\Pictures\33_22538_23f313f92505089.jpg" alt= "pictures" /> show in the middle. </p>
+
+
+</body>
+
+</html>
