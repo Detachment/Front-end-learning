@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div
+{
+width:100px;
+height:100px;
+background:red;
+animation:myfirst 5s;
+-moz-animation:myfirst 5s;
+-webkit-animation:myfirst 5s;
+-o-animation:myfirst 5s;
+}
+
+@keyframes myfirst
+{
+from {background:red;}
+to {background:green;}
+}
+@-moz-keyframes myfirst
+{
+from {background:red;}
+to {background:green;}
+}
+@-webkit-keyframes myfirst
+{
+from {background:red;}
+to {background:green;}
+}
+@-o-keyframes myfirst
+{
+from {background:red;}
+to {background:green;}
+}
+
+</style>
+</head>
+
+<body>
+<div></div>
+
+<p>This example would not work in IE.</p>
+</body>
+
+</html>

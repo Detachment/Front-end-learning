@@ -1,0 +1,93 @@
+<DOCTYPE html>
+<html>
+<head>
+<style>
+div
+{
+margin:20%;
+width:100px;
+height:100px;
+background:red;
+position:relative;
+animation-name:mysecond;
+animation-duration:2s;
+animation-timing-function:linear;
+animation-delay:2s;
+animation-iteration-count:infinite;
+animation-direction:alternate;
+animation-play-state:running;
+
+/*Firfox*/
+-moz-animation-name:mysecond;
+-moz-animation-duration:2s;
+-moz-animation-timing-function:linear;
+-moz-animation-delay:2s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:alternate;
+-moz-animation-play-state:running;
+
+/*Safari and Chrome*/
+-webkit-animation-name:mysecond;
+-webkit-animation-duration:2s;
+-webkit-animation-timing-function:linear;
+-webkit-animation-delay:2s;
+-webkit-animation-iteration-count:3;
+-webkit-animation-direction:alternate;
+-webkit-animation-play-state:running;
+
+/*Opera*/
+-o-animation-name:mysecond;
+-o-animation-duration:2s;
+-o-animation-timing-function:linear;
+-o-animation-delay:2s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:alternate;
+-o-animation-play-state:running;
+
+}
+
+@keyframes mysecond
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+70%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes mysecond
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+70%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-moz-keyframes mysecond
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+70%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-o-keyframes mysecond
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+70%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+</style>
+</head>
+
+<body>
+<p>This would not work in IE, neither.</p>
+<div></div>
+</body>
+
+</html>
