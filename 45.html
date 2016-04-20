@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+function changeImage()
+{
+element= document.getElementById('myimage')
+if (element.src.match("bulbon"))
+  {
+  element.src= "http://www.w3school.com.cn/i/eg_bulboff.gif";
+  }
+else
+  {
+  element.src= "http://www.w3school.com.cn/i/eg_bulbon.gif";
+  }
+}
+</script>
+
+<img id= "myimage" onclick= "changeImage()" src= "http://www.w3school.com.cn/i/eg_bulboff.gif" />
+
+<p>Click on the bulb, and you would see something great happens.</p>
+</body>
+</html>
