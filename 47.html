@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var Fname="bill";
+var Lname="gates";
+var name="Fname+Lname";
+
+document.write(Fname+ "<br />");
+document.write(Lname+ "<br />");
+document.write(name+ "<br />");
+</script>
+<br />
+<!--we can see how to put something into a box-->
+<button onclick= "myfunction()">Click here.</button>
+<p id= "demo">I will show you a car name.</p>
+<script>
+function myfunction()
+{
+var carname= "VolWalker" 
+document.getElementById("demo").innerHTML=carname;
+//var carname= "VolWalker" 经测试必须先赋值，后调用，否则会出现问题。
+}
+</script>
+
+</body>
+</html>
