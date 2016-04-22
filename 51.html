@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>If it is earier than 09:00 am, "Good Day" would appear if you click the button.</p>
+<p>If it is later than 09:00 am, "Good Night" would appear if you click the button.</p>
+<button onclick= "myfunction()"> Click Here!</button>
+
+<p id= "demo"></p>
+
+<script>
+function myfunction()
+{
+var x= ""
+var time=new Date().getHours();
+if (time<9)
+  {
+  x= "Good Day";
+  }
+else
+  {
+  x= "Good Night";
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+</body>
+</html>
