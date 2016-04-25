@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click here, and the loop would go on when i is small then 50.</p>
+<button onclick= "myFunction()">Click here!</button>
+<p id= "demo"></p>
+
+<script>
+function myFunction()
+{
+var x= "", i=0;
+while (i<50)
+  {
+  x=x + "The number is " + i + "<br />";
+  i++;
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+</body>
+</html>

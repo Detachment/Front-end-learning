@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button, and all the charecters of "person" would in the loop.</p>
+<button onclick= "myFunction()">Click Here!</button>
+<p id= "demo"></p>
+
+<script>
+function myFunction()
+{
+var x;
+var txt= "  ";
+var person= {fname:"Bill", lname: "Gates", age:56};
+
+for (x in person)
+  {
+  txt=txt + person[x] + " "; 
+  }
+document.getElementById("demo").innerHTML=txt;
+
+}
+</script>
+
+</body>
+</html>
