@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+<p>点击下面的按钮来执行循环，这个循环会跳过i=3的步进.</p>
+<button onclick= "myFunction()">Click Here!</button>
+<p id= "demo"></p>
+
+<script>
+function myFunction()
+{
+var x= "", i=0;
+for (i=0; i<10; i++)
+  {
+  if (i==3)
+    {
+    continue;
+    }
+  x=x + "The number is " + i + "<br />";
+  }
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+
+</body>
+</html>
