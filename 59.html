@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var y= "";
+function myFunction()
+{
+try
+  {
+  var x=document.getElementById("demo").value;
+  if (x== "")    throw "There is nothing, don't fool me!"
+  if (isNaN(x))  throw "It is not a number,don't fool me !"
+  if (x>10)      throw "It's too big, stupid ass!"
+  if (x<5)       throw "It's too small, stupid ass!"
+  }
+catch(err)
+  {
+  y= "Tips: " + err;
+  alert(y);
+  }
+}
+</script>
+
+<h1>This is a amazing try!</h1>
+<p>Please input a number between 5 and 10 in the below box: </p>
+<input id= "demo" type= "text">
+<button type= "button" onclick= "myFunction()" >Input the tested number! </button>
+
+
+</body>
+</html>

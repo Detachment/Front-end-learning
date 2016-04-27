@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var txt= "";
+function message()
+{
+try
+  {
+  adddlert("Welcome guest!");
+  }
+catch (err)
+  {
+  txt= "There is a mistake in this page.\n\n" ;
+  txt+= "The error is: " + err.message + "\n\n";
+  txt+= "Click to continue.\n\n";
+  alert(txt);
+  
+  /* The result would be the same with "+=" and just "+" .
+  txt= "There is a mistake in this page.\n\n" ;
+  + "The error is: " + err.message + "\n\n";
+  + "Click to continue.\n\n";
+  */
+  }
+}
+</script>
+</head>
+
+<body>
+<input type= "button" value= "Check the message!" onclick= "message()" />
+</body>
+
+</html>
