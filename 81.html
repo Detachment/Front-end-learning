@@ -1,0 +1,21 @@
+<html>
+<body>
+
+<script type= "text/javascript">
+var patt1= new RegExp("J");
+document.write(patt1.test("The best things in life are free") + "<br />" );
+
+var patt2= new RegExp("e");
+document.write(patt2.exec("The best things in life are free") + "<br />" );
+
+var patt3= new RegExp("e", "g" );
+do 
+{
+result= patt3.exec("The best things in life are free");
+document.write(result);
+}
+while (result!=null)
+</script>
+
+</body>
+</html>

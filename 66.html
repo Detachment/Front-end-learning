@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function changetext(id)
+{
+id.innerHTML= "Thank you!";
+}
+
+function displayDate()
+{
+document.getElementById("demo").innerHTML= Date();
+}
+</script>
+</head>
+
+<body>
+<h1 onclick= "changetext(this) ">Please click on this.</h1>
+<p id= "demo">Time will appear in this line when we click the button!</p>
+<button onclick= "displayDate()">Click here!</button>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script type= "text/javascript">
+
+var text= "Hello World"
+
+document.write("<p>Big:" + text.big() + "</p>" )
+document.write("<p>Strike:" + text.strike() + "</p>" )
+
+document.write(text.indexOf("r") + "<br />" )         //用来查找特定字符所在位置；
+
+document.write(text.match("World!") + "<br />" )      //用来查找匹配是否存在所需的元素；
+document.write(text.match("worlde") + "<br />" )
+document.write(text.match("World") + "<br />" )
+
+document.write(text.replace(/Hello/, "Hi" ) )         //将Hi替换Hello；
+</script>
+
+</body>
+</html>

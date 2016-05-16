@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id= "div1">
+<p id= "p1">This is a dialouge.</p>
+<p id= "p2">This is also a dialouge.</p>
+</div>
+
+<script>
+var para=document.createElement("p");
+var node=document.createTextNode("This is the new paragraph.");
+para.appendChild(node);
+
+var element=document.getElementById("div1");
+var child=document.getElementById("p1")
+//remove something from the division:
+element.removeChild(child);
+//add something to the division:
+element.appendChild(para);
+</script>
+
+</body>
+</html>

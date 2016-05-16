@@ -1,0 +1,30 @@
+<html>
+<body>
+
+<script type= "text/javascript">
+document.write(Math.round(0.60) + "<br />" )
+
+function myFunction()
+{
+  document.getElementById("demo").innerHTML = Math.random();
+}
+
+function myFunction2()
+{
+  var x= Math.floor((Math.random()*1000) + 1);
+  document.getElementById("demo2").innerHTML = x;
+}
+
+document.write(Math.max(2,4,6,101) )
+</script>
+
+<p>Click the button to display a random number.</p>
+<button onclick= "myFunction()">Try it </button>
+<p id= "demo"></p>
+
+<p>Click the button to display a random number.</p>
+<button onclick= "myFunction2()">Try it </button>
+<p id= "demo2"></p>
+
+</body>
+</html>
