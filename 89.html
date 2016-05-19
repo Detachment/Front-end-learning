@@ -1,0 +1,32 @@
+<html>
+<head>
+<script type= "text/javascript">
+var c=0
+var t
+function timedCount()
+{
+document.getElementById('txt').value=c 
+c=c + 1
+t=setTimeout("timedCount()", 1000 )
+}
+
+function stopCount()
+{
+c=0;
+setTimeout("document.getElementById('txt').value=0", 0 );
+clearTimeout(t);
+}
+</script>
+</head>
+
+<body>
+<form>
+<input type= "button" value= "Start!" onclick= "timedCount()" />
+<input type= "text" id= "txt" />
+<input type= "button" value= "Stop!" onclick= "stopCount()" />
+</form>
+
+<p>Click the start button, it would start to count the time until click the stop button.</p>
+</body>
+
+</html>
