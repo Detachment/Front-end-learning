@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<script>
+var u= 24;
+var v= 42;
+function print(s){
+  document.write(s);
+}
+
+function gcd(u,v){
+  var a=u;
+  var b=v;
+  var temp=v;
+  while (v != 0)
+  {
+  temp = u % v;
+  u = v;
+  v = temp;
+  }
+  print("The gcd of " + a + " and " + b + " is: " + u + "<br /> ");
+}
+gcd(10,24);
+gcd(12,30);
+</script>
+
+</body>
+</html>

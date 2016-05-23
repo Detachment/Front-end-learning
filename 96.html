@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<script>
+function Rect(w,h){
+    this.width = w;
+    this.height = h;
+    this.area = function(){
+        return this.width*this.height;
+    }
+}
+var r = new Rect(2, 20);
+alert(r.area());
+r.width = 10;
+alert(r.area());
+</script>
+
+</body>
+</html>

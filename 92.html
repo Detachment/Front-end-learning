@@ -1,0 +1,17 @@
+<html>
+<body>
+
+<script>
+var number = 12345;
+var reverse = 0;
+do
+{
+  var lastDigit = number % 10  ;
+  reverse = (reverse * 10 ) + lastDigit;
+  number = parseInt(number / 10);
+} while (number > 0);
+alert("That number reversed is : " + reverse );
+</script>
+
+</body>
+</html>

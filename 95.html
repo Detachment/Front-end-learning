@@ -1,0 +1,21 @@
+<html>
+<body>
+
+<script>
+function test(){
+   alert(this.x);
+}
+var o = {};
+o.x = 1;
+o.m = test;
+o.m();
+
+function test2(){
+  this.x = 2;
+}
+var p = new test2();
+alert(p.x);
+</script>
+
+</body>
+</html>
