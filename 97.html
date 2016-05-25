@@ -1,0 +1,24 @@
+<html>
+<body>
+
+<script>
+var x = 2;
+function test(){
+    this.x = 1;
+}
+var o = new test();
+test();
+alert(x);
+
+function person(){
+  this.abc = function(){
+  alert(this.v);
+  }
+}
+var m = new person();
+m.v = 12;
+m.abc();
+</script>
+
+</body>
+</html>

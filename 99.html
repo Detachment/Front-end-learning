@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+<script>
+var count = 10;
+function update(){
+  if (count > 0)
+  document.getElementById("x").innerHTML = count-- ;
+}
+</script>
+</head>
+
+<body onLoad = "setInterval('update()', 1000)" >
+
+<!--
+<script>
+if (confirm("Continue?")){
+  alert("OK,go on!");
+} else {
+  alert("Then, goodbye");
+}
+
+var name = prompt("Please enter your name: ");
+alert("我的名字是：" + name);
+</script>
+-->
+
+<p onMouseOver = "status = 'You can you up!'"  onMouseOut = "status = ''" >
+This is a test!
+</p>
+<p id = "x"></p>
+
+</body>
+</html>

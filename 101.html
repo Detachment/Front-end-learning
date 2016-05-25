@@ -1,0 +1,20 @@
+<html>
+
+<head>
+<script>
+// 想利用下面的函数达到每两秒高度增加一倍的效果，但是并没有达到，问题出在哪里？
+function larger(){                     
+  var h = document.Tony.height;
+  h = 2 * h;
+}
+</script>
+</head>
+
+<body onload = "setInterval('larger()', 2000) " >
+<img src = "D:\Personal\Desktop\7 up.jpg" name = "Tony" height = 300 />
+<script>
+alert(document.Tony.height);
+</script>
+</body>
+
+</html>

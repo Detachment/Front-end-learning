@@ -1,0 +1,30 @@
+﻿<html>
+<body onload = "setInterval('show()', 200)">
+<img name = "pic" src = "0.JPG" width = 400 ></img>
+
+<!--
+<script>
+var images = new Array(6);
+var index = 1;
+for(var i=0; i<6; i++){
+  images[i] = new image();
+  images[i].src = i + ".JPG";
+}
+function show(){
+  document.pic.src = images[index].src;
+  index = (index + 1)%6;
+}
+</script>
+-->
+
+<script>
+function show(){
+  for(var i = 0; i<6; i++){
+    document.pic.src = i + ".JPG"
+  }
+}
+
+<!--我不知道问题出在哪里，出不来想要的效果，哎--->
+
+</body>
+</html>
