@@ -1,0 +1,22 @@
+<html>
+<head>
+<style>
+#div1 {width:200px; height:200px; background:red;}
+</style>
+<script>
+function toChange(name, value)
+{
+  var oDiv=document.getElementById("div1");
+  oDiv.style[name]=value;
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="Heigher" onclick="toChange('height', '400px');" />
+<input type="button" value="Wider" onclick="toChange('width', '400px');" />
+<input type="button" value="Color" onclick="toChange('background', 'green');" />
+<div id="div1"></div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+<style>
+</style>
+<script>
+window.onload=function()
+{
+  var Ninp1=document.getElementById("inp1");
+  var Ndiv=document.getElementById("div1");
+  var Ninput=Ndiv.getElementsByTagName("input");
+  Ninp1.onclick=function ()
+  {
+    for(var i=0; i<Ninput.length; i++)
+    {
+      Ninput[i].checked=true;
+    }
+  };
+  
+  var Ninp2=document.getElementById("inp2");
+  var Ndiv=document.getElementById("div1");
+  var Ninput=Ndiv.getElementsByTagName("input");
+  Ninp2.onclick=function ()
+  {
+    for(var i=0; i<Ninput.length; i++)
+    {
+      Ninput[i].checked=false;
+    }
+  };
+  
+  var Ninp3=document.getElementById("inp3");
+  var Ndiv=document.getElementById("div1");
+  var Ninput=Ndiv.getElementsByTagName("input");
+  Ninp3.onclick=function ()
+  {
+    for(var i=0; i<Ninput.length; i++)
+    {
+      if(Ninput[i].checked==true)
+      {
+        Ninput[i].checked=false;
+      }
+      else
+      {
+        Ninput[i].checked=true;
+      }
+    }
+  };
+  
+};
+</script>
+</head>
+
+<body>
+<input id='inp1' type="button" value="All" />
+<input id='inp2' type="button" value="None" />
+<input id='inp3' type="button" value="Opp" /><br />
+<div id='div1'>
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+<input type='checkbox' /><br />
+</div>
+</body>
+
+</html>

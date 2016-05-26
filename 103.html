@@ -1,0 +1,23 @@
+<html>
+<head>
+<style>
+#div1 {width:180px; height:180px; background:red; }
+</style>
+<script>
+function setColor(color)
+{
+  var toDiv=document.getElementById("div1");
+  toDiv.style.background=color;
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="Black" onclick="setColor('black')" />
+<input type="button" value="Green" onclick="setColor('green')" />
+<input type="button" value="Yellow" onclick="setColor('yellow')" />
+
+<div id="div1" ></div>
+</body>
+
+</html>

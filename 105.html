@@ -1,0 +1,30 @@
+<html>
+<head>
+<style>
+div {width:200px; height:200px; border:1px solid black; margin:10px; float:left;}
+</style>
+<script>
+window.onload=function ()
+{
+  var odiv=document.getElementsByTagName("div");
+  var num=odiv.length;
+  alert(odiv.length);
+  for(var i=0; i<num; i++)
+  {
+    odiv[i].style.background="red";
+  }
+}
+</script>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+
+</html>
