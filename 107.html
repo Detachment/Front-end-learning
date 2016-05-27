@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+<style>
+div {width:200px; height:100px; border:1px solid black; background:gray;margin-bottom:1px;}
+.active {background:yellow;}
+</style>
+<script>
+window.onload=function ()
+{
+  var obtn=document.getElementsByTagName('input');
+  var odiv=document.getElementsByTagName('div');
+  for(var i=0; i<obtn.length; i++)
+  {
+    obtn[i].para=i;
+    obtn[i].onclick=function ()
+    {
+    for (var i=0; i<obtn.length; i++)
+      {
+      obtn[i].className='';
+      odiv[i].style.display='none';
+      }
+    this.className='active';
+    odiv[this.para].style.display='block';
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+<input type='button' value='出国' />
+<input type='button' value='教育' />
+<input type='button' value='旅游' />
+<input type='button' value='招商' />
+<div display='block' >1111</div>
+<div display='none'>2222</div>
+<div display='none'>3333</div>
+<div display=none>4444</div>
+</body>
+
+</html>
