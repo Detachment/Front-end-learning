@@ -1,0 +1,70 @@
+﻿<html>
+<head>
+<style>
+body {width:1000px; margin:0 auto;}
+div {width:380px; margin:10px auto; }
+li{width:100px; background-color:silver; text-align:center; display:inline; float:left; margin:5px;}
+h2{color:green;}
+p{color:green;}
+ul {width:100%; list-style-type:none; float:left;}
+</style>
+<script>
+window.onload=function ()
+{
+  var odiv=document.getElementById('tab');
+  var olis=odiv.getElementsByTagName('li');
+  var otxt=document.getElementById('text');
+  var fun=[
+          '哈哈哈，马上过年了',
+          '这个月有我的生日哟',
+          '马上清明节假了呢',
+          '今天你过愚人节了吗',
+          '端午要吃粽子哈',
+          '去看卡通动画片了没有啊',
+          '就要放暑假了呢',
+          '西瓜到了该成熟的季节了',
+          '哈哈哈，又要开学了',
+          '教师节想好送什么礼物了吗',
+          '天气就要变冷了，好好学习',
+          '马上放寒假了！'
+          ];
+  for(var i=0;i<olis.length;i++)
+    {
+      olis[i].index=i;
+      olis[i].onmouseover=function()
+      {
+        for(var i=0;i<olis.length;i++)
+        {
+          olis[i].style.background='silver';
+        }
+        this.style.background='yellow';
+        otxt.innerHTML='<h2>'+(this.index+1)+'月活动</h2><p>'+fun[this.index]+'</p>' ;
+      }
+    }
+}
+</script>
+</head>
+
+<body>
+<div id='tab' class='calendar'>
+  <ul>
+  <li><h2>1</h2><p>JAN</p></li>
+  <li><h2>2</h2><p>FRE</p></li>
+  <li><h2>3</h2><p>MAR</p></li>
+  <li><h2>4</h2><p>APR</p></li>
+  <li><h2>5</h2><p>MAY</p></li>
+  <li><h2>6</h2><p>JUN</p></li>
+  <li><h2>7</h2><p>JUL</p></li>
+  <li><h2>8</h2><p>AUG</p></li>
+  <li><h2>9</h2><p>SEP</p></li>
+  <li><h2>10</h2><p>OCT</p></li>
+  <li><h2>11</h2><p>NOV</p></li>
+  <li><h2>12</h2><p>DEC</p></li>
+  </ul>
+</div>
+<div id='text'>
+  <h2></h2><p></p>
+  </div>
+</body>
+
+</html>
