@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+<script>
+window.onload=function()
+{
+  var oTxt1=document.getElementById('txt1');
+  var oTxt2=document.getElementById('txt2');
+  var oBtn=document.getElementById('btn');
+  oBtn.onclick=function()
+  {
+    var n1=parseInt(oTxt1.value);
+    var n2=parseInt(oTxt2.value);
+    alert(typeof oTxt1.value);
+    alert(oTxt1.value);
+    alert(typeof n1);
+    alert(n1);
+    if(isNaN(parseInt(oTxt1.value)))
+    {
+      alert("输入的第一项不是数字，请重新输入！");
+    }
+    else if (isNaN(parseInt(oTxt2.value)))
+    {
+       alert("输入的第二项不是数字，请重新输入！");
+    }
+    else
+    {
+      alert(n1+n2);
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+<input id='txt1' type='text'  />
+<input id='txt2' type='text'  />
+<input id='btn' type='button' value='求和' />
+</body>
+
+</html>
