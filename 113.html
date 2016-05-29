@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+<script>
+function add(){
+    var a = document.getElementById("No1").value;
+    var b= document.getElementById("No2").value;
+    var c= document.getElementById("btn").value;
+ 
+try{
+    if(isNaN(a))
+    {
+      alert("输入的第一项不是数字，请重新输入！");
+    }
+    else if (isNaN(b))
+    {
+       alert("输入的第二项不是数字，请重新输入！");
+    }
+    else
+    {
+      alert(parseInt(a)+parseInt(b));
+    }
+}catch(e){
+alert("输入的数值有误");
+}
+}
+</script>
+<input id='No1' type='text' />
+<input id='No2' type='text' />
+<input id='btn' type='button' value='求和' onclick="add()" />
+</body>
+</html>
