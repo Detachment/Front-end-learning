@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+<script>
+var name='赵毅';
+var sex='Male';
+switch(sex)
+{
+  case 'Male':
+    alert(name+"先生，您好~");
+    break;
+  case 'Female':
+    alert(name+"女士，您好");
+    break;
+  default:
+    alert(name+'您好');
+}
+
+var a=21;
+a%2==0?alert('双数'):alert('单数');
+
+function sum(a,b)
+{
+  return a+b;
+}
+alert(sum(3,56))
+
+function sum2()
+{
+  var result=0;
+  for(var i=0; i<arguments.length; i++)
+  {
+    result+=arguments[i];
+  }
+  return result;
+}
+alert(sum2(12,23,433,46,57,3));
+
+
+</script>
+</body>
+
+</html>
