@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function css(obj,name,value)
+{
+  if(arguments.length==2)
+  {
+    return obj.style[name];
+  }
+  else
+  {
+    obj.style[name]=value;
+  }
+}
+window.onload=function()
+{
+  var oDiv=document.getElementById('div1')
+  alert(css(oDiv,'width'));
+  css(oDiv,'background','green')
+}
+
+</script>
+</head>
+
+<body>
+<div id='div1' style="width:200px; height:100px; background:red;"></div>
+</body>
+
+</html>
