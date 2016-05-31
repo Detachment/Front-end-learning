@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 {width:200px; height:200px; background:red;}
+</style>
+<script>
+function goStyle(obj,name,value)
+{
+  if(obj.currentStyle)
+  {
+    return obj.currentStyle[name];
+  }
+  else
+  {
+    return getComputedStyle(obj,true)[name];
+  }
+}
+
+window.onload=function()
+{
+  var oDiv=document.getElementById('div1');
+  alert(goStyle(oDiv,'backgroundColor'));
+}
+
+</script>
+</head>
+
+<body>
+<div id='div1'></div>
+</body>
+</html>
