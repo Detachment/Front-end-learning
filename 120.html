@@ -1,0 +1,72 @@
+<html>
+<head>
+<style>
+body {background:#000033; font-size:50px; color:white;}
+#div1 {position:absolute; left:720px; top:150px; }
+#div2 {position:relative; left:620px; top:360px; }
+#div3 {position:absolute; left:550px; top:280px; }
+</style>
+<script>
+window.onload=function ()
+{
+  function toDou(n)
+  {
+    if(n<10)
+    {
+      return "0" + n;
+    }
+    else
+    {
+      return "" + n;
+    }
+  }
+  var oDiv2=document.getElementById('div2');
+  var aImg=oDiv2.getElementsByTagName('img');
+  function tick()
+  {
+    var oDate=new Date();
+    var str=toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+    for(var i=0;i<aImg.length;i++)
+    {
+      aImg[i].src=str[i] + ".png";
+    };
+  };
+  setInterval(tick,1000);
+  tick();
+}
+</script>
+</head>
+
+<body>
+<div id='div1' >
+<img src='title.png' />
+</div>
+
+<div id='div2' >
+<img src='0.png' />
+<img src='0.png' />
+:
+<img src='0.png' />
+<img src='0.png' />
+:
+<img src='0.png' />
+<img src='0.png' />
+</div> 
+
+<div id='div3'>
+<img src='2.png' />
+<img src='0.png' />
+<img src='1.png' />
+<img src='6.png' />
+<img src='year.png' />
+<img src='0.png' />
+<img src='6.png' />
+<img src='month.png' />
+<img src='0.png' />
+<img src='3.png' />
+<img src='seven.png' />
+</div>
+
+</body>
+
+</html>
