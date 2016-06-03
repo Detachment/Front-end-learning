@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {margin:0px; padding:0px;}
+#div1 {width:712px; height:108px; background:red; margin:200px auto; position:relative; overflow:hidden; }
+#div1 ul {position:absolute; left:0; top:0; }
+ul li {width:178px; height:108px; float:left; list-style:none; }
+</style>
+<script>
+window.onload=function()
+{
+  var oDiv=document.getElementById('div1');
+  var aUi=oDiv.getElementsByTagName('ul')[0];
+  var aLi=aUi.getElementsByTagName('li');
+  var oBtn1=document.getElementById('Left');
+  var oBtn2=document.getElementById('Rigth');
+  var offset=2;
+  aUi.innerHTML=aUi.innerHTML+aUi.innerHTML;
+  aUi.style.width=aLi.length*178+'px';
+  function move()
+  {
+    if(aUi.offsetLeft<-aUi.offsetWidth/2)
+    {
+      aUi.style.left='0';
+    }
+    if(aUi.offsetLeft>0)
+    {
+      aUi.style.left=-aUi.offsetWidth/2+'px' ;
+    }
+    aUi.style.left=aUi.offsetLeft+offset+"px";
+  }
+  var timer=setInterval(move,30); 
+  oDiv.onmouseover=function()
+  {
+    clearInterval(timer);
+  };
+  oDiv.onmouseout=function()
+  {
+    timer=setInterval(move,30); 
+  }
+  
+  oBtn1.onclick=function()
+  {
+    offset=-2;
+  };
+  oBtn2.onclick=function()
+  {
+    offset=2;
+  };
+}
+</script>
+</head>
+
+<body>
+<input id='Left' type='button' value='向左动'/>
+<input id='Rigth' type='button' value='向右动' />
+<div id='div1' >
+<ul>
+  <li><img src='无缝滚动图片/images/1.jpg' /></li>
+  <li><img src='无缝滚动图片/images/2.jpg' /></li>
+  <li><img src='无缝滚动图片/images/3.jpg' /></li>
+  <li><img src='无缝滚动图片/images/4.jpg' /></li>
+</div>
+</body>
+
+</html>
