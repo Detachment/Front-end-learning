@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<script>
+window.onload=function ()
+{
+  var oTxt=document.getElementById('txt');
+  var oBtn=document.getElementById('btn');
+  var oUl=document.getElementById('ull');
+  oBtn.onclick=function ()
+  {
+    var oLi=document.createElement('li');
+    var aLi=oUl.getElementsByTagName('li');
+    oLi.innerHTML=oTxt.value;
+    oUl.insertBefore(oLi,aLi[0]);
+  }
+}
+</script>
+
+<body>
+<input id='txt' type='text' />
+<input id='btn' type='button' value='Insert' />
+<ul id='ull'>
+</ul>
+</body>
+
+</html>
