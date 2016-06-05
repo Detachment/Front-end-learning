@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<script>
+window.onload=function ()
+{
+  var oUl=document.getElementById('ull');
+  var oTxt=document.getElementById('txt');
+  var oBtn=document.getElementById('btn');
+  oBtn.onclick=function ()
+  {
+    var oLi=document.createElement('li');
+    var aLi=oUl.getElementsByTagName('li');
+    oLi.innerHTML=oTxt.value;
+    if(aLi.length>1)
+    {
+      oUl.insertBefore(oLi,aLi[1]);
+    }
+    else
+    {
+      oUl.appendChild(oLi);
+    };
+  };
+}
+</script>
+
+<body>
+<input id='txt' type='text' />
+<input id='btn' type='button' value='Insert' />
+<ul id='ull'>
+</ul>
+</body>
+
+</html>
