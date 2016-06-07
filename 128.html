@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script>
+window.onload=function ()
+{
+  var oTab=document.getElementById('tab1');
+  var aTr=oTab.getElementsByTagName('tr');
+  var oName=document.getElementById('name');
+  var oAge=document.getElementById('age');
+  var oBtn=document.getElementById('sub');
+  var id=oTab.tBodies[0].rows.length+1
+  oBtn.onclick=function ()
+  {
+    var oTr=document.createElement('tr'); 
+    
+    var oTd=document.createElement('td');
+    oTd.innerHTML=id++;
+    oTr.appendChild(oTd);
+    
+    var oTd=document.createElement('td');
+    oTd.innerHTML=oName.value;
+    oTr.appendChild(oTd);
+    
+    var oTd=document.createElement('td');
+    oTd.innerHTML=oAge.value;
+    oTr.appendChild(oTd);
+    
+    var oTd=document.createElement('td');
+    oTd.innerHTML="<a href='javascript:;'>Delete</a>" ;
+    oTr.appendChild(oTd);
+    
+    oTab.tBodies[0].appendChild(oTr);               
+    
+    oTd.getElementsByTagName('a')[0].onclick=function ()
+    {
+      oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+    }
+  }                                        
+}
+</script>
+</head>
+
+<body>
+<input id='name' type='text' />
+<input id='age'  type='text' />
+<input id='sub'  type='button' value='Fill in' />
+<table id='tab1' border='1px' width='500px' > 
+  <thead>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Age</td>
+    <td>BianJi</td>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Blue</td>
+      <td>23</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Blue2</td>
+      <td>24</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Blue3</td>
+      <td>25</td>
+       <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Blue4</td>
+      <td>26</td>
+       <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Blue5</td>
+      <td>27</td>
+       <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Blue6</td>
+      <td>28</td>
+       <td></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+
+</html>
