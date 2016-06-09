@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 {width:100px; height:100px; background:red; position:absolute; right:0px; top:50px; }
+#div2 {width:1px; height:500px; background:green; position:absolute; left:500px; top:0px; }
+</style>
+<script>
+
+function startMove(iTarget)
+{ 
+  var timer;
+  var oDiv=document.getElementById('div1');
+  clearInterval(timer);
+  
+  timer=setInterval(function (){
+    var speed=(iTarget-oDiv.offsetLeft)/30;
+    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+    if(oDiv.offsetLeft==iTarget)
+    {
+      clearInterval(timer);
+    }
+    else
+    {
+      oDiv.style.left=oDiv.offsetLeft+speed+'px';
+    };
+    document.title=oDiv.offsetLeft;
+  },5);
+}
+</script>
+</head>
+
+<body>
+<input id='btn' type='button' value='Start' onclick='startMove(500)' /> 
+<div id='div1' ></div>
+<div id='div2' ></div>
+</body>
+
+</html>

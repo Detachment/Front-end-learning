@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 {width:20px; height:150px; background:gray; position:absolute; right:0; bottom:0; }
+</style>
+<script>
+window.onscroll=function ()
+{
+ var oDiv=document.getElementById('div1');
+ var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+ startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop));
+};
+ 
+var timer;                    // 这个变量定义在函数里面和定义在现在这个位置为什么会对结果产生决定性的影响？
+function startMove(iTarget)
+{ 
+  var oDiv=document.getElementById('div1');
+  clearInterval(timer);
+  
+  timer=setInterval(function (){
+    var speed=(iTarget-oDiv.offsetTop)/30;
+    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+    if(oDiv.offsetTop==iTarget)
+    {
+      clearInterval(timer);
+    }
+    else
+    {
+      oDiv.style.top=oDiv.offsetTop+speed+'px';
+    };
+  },5);
+}
+</script>
+</head>
+
+<body style="height:3000px" >
+<div id='div1' ></div>
+</body>
+
+</html>
