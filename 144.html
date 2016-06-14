@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {width:200px; height:200px; background:gray; display:none; margin-top:5px;}
+</style>
+<script>
+/* About event:
+document.onclick=function (ev)
+{
+    var oEvent=ev||event;
+    alert(oEvent.clientX+','+oEvent.clientY);
+}
+*/
+
+window.onload=function ()
+{
+    var oBtn=document.getElementById('btn');
+    var oDiv=document.getElementById('div1');
+    
+    oBtn.onclick=function (ev)
+    {
+        var oEv=ev||event;
+        oDiv.style.display='block';
+        oEv.cancelBubble=true;
+    };
+    document.onclick=function ()
+    {
+         oDiv.style.display='none';
+    }
+}
+</script>
+</head>
+
+<body>
+<input id='btn' type='button' value='Show' /><br />
+<div id='div1' /></div>
+</body>
+
+</html>
