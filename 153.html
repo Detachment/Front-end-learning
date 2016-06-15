@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 {width:100px; height:100px; background:red; position:absolute; }
+#div2 {width:1000px; height:600px; background:gray; position:relative; }
+</style>
+<script>
+window.onload=function ()
+{
+    var oDiv=document.getElementById('div1');
+    var x;
+    var y;
+    oDiv.onmousedown=function (ev)
+    {
+        var oDiv=document.getElementById('div1');
+        var oDiv2=document.getElementById('div2');
+        
+        var oEv=ev||event;
+        x=oEv.clientX-oDiv.offsetLeft;
+        y=oEv.clientY-oDiv.offsetTop;
+        
+        oDiv.style.left=oEv.clientX-x;
+        oDiv.style.top=oEv.clientY-y;
+        
+        document.onmousemove=function (ev)
+        {
+            var oEv=ev||event;
+            var l=oEv.clientX-x;
+            var t=oEv.clientY-y;
+            
+            if(l<50)
+            {
+                l=0;
+            }
+            else if(l>oDiv2.offsetWidth-oDiv.offsetWidth-50)
+            {
+                l=oDiv2.offsetWidth-oDiv.offsetWidth;
+            };
+            
+            if(t<50)
+            {
+                t=0;
+            }
+            else if(t>oDiv2.offsetHeight-oDiv.offsetHeight-50)
+            {
+                t=oDiv2.offsetHeight-oDiv.offsetHeight;
+            }
+            
+            oDiv.style.left=l+'px';
+            oDiv.style.top=t+'px';
+            
+           
+        };
+        
+        document.onmouseup=function ()
+        {
+            document.onmousemove=null;
+            document.onmouseup=null;
+        };
+        
+        return false;
+    }; 
+}
+
+</script>
+</head>
+
+<body>
+<div id='div2'>
+    <div id='div1' ></div>
+</div>
+</body>
+
+</html>
