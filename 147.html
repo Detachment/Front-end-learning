@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 {width:100px; height:100px; background:blue; position:absolute; }
+</style>
+<script>
+/*
+document.onkeydown=function (ev)
+{
+    var oEv=ev||event;
+    alert(oEv.keyCode);
+}
+*/
+
+
+document.onkeydown=function (ev)
+{
+    var oDiv=document.getElementById('div1');
+    var oEv=ev||event;
+    if(oEv.keyCode==37)
+    {
+        oDiv.style.left=oDiv.offsetLeft-10+'px';
+    }
+    else if(oEv.keyCode==39)
+    {
+        oDiv.style.left=oDiv.offsetLeft+10+'px';
+    }
+    else if(oEv.keyCode==38)
+    {
+        oDiv.style.top=oDiv.offsetTop-10+'px';
+    }
+    else if(oEv.keyCode==40)
+    {
+        oDiv.style.top=oDiv.offsetTop+10+'px';
+    }
+}
+
+</script>
+</head>
+
+<body>
+<div id='div1'></div>
+</body>
+</html>
