@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {width:10px; height:10px; background:red; position:absolute; }
+</style>
+<script>
+function getPos(ev)
+{
+    var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;  
+    var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;  
+    return {X:ev.clientX+scrollLeft, Y:ev.clientY+scrollTop }
+}
+
+document.onmousemove=function (ev)
+{
+    var aDiv=document.getElementsByTagName('div');
+    var oEv=ev||event;
+    var pos=getPos(oEv);
+
+    for(var i=aDiv.length-1;i>0;i--)
+    {
+        aDiv[i].style.left=aDiv[i-1].offsetLeft+'px';
+        aDiv[i].style.top=aDiv[i-1].offsetTop+'px';
+    }
+
+    aDiv[0].style.left=pos.X+'px';
+    aDiv[0].style.top=pos.Y+'px';
+};
+
+</script>
+</head>
+
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+
+</html>
