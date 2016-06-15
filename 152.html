@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About attachEvent and addEventListener. </title>
+<style>
+
+</style>
+<script>
+
+function myAddEvent(obj, ev, fn)
+{
+    if(obj.attachEvent)
+    {
+        obj.attachEvent('on'+ev, fn);
+    }
+    else
+    {
+        obj.addEventListener(ev, fn, false);
+    }
+}
+
+window.onload=function ()
+{
+    var oBtn=document.getElementById('btn');
+    
+    myAddEvent(oBtn, 'click', function(){
+        alert('a')
+    });
+        myAddEvent(oBtn, 'click', function(){
+        alert('b')
+    });
+    
+/*
+    if(oBtn.attachEvent)
+    {
+        oBtn.attachEvent('onclick', function(){
+            alert('a');
+        });
+        oBtn.attachEvent('onclick', function(){
+            alert('b');
+        });
+    }
+    else
+    {
+        oBtn.addEventListener('click', function(){
+            alert('c')
+        }, false);
+        oBtn.addEventListener('click', function(){
+            alert('d')
+        }, false);
+    }
+*/
+}
+</script>
+</head>
+
+<body>
+<input id='btn' type='button' value='Show' />
+</body>
+</html>
