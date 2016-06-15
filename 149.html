@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {margin:0px; padding:0px; }
+#div1 {width:100px; background:gray; display:none; position:absolute; }
+li {list-style:none; }
+</style>
+<script>
+document.oncontextmenu=function (ev)
+{
+    var oDiv=document.getElementById('div1');
+    var oEv=ev||event;
+    oDiv.style.display='block';
+    oDiv.style.left=oEv.clientX+'px';
+    oDiv.style.top=oEv.clientY+'px';
+    
+    return false;
+}
+
+document.onclick=function ()
+{
+    var oDiv=document.getElementById('div1');
+    oDiv.style.display='none';
+}
+
+</script>
+</head>
+
+<body>
+<div id='div1' >
+    <ul>
+        <li><a href='https://www.google.com.hk/webhp?hl=zh-CN&sourceid=cnhp&gws_rd=ssl'>aaa</a></li>
+        <li>bbb</li>
+        <li>ccc</li>
+        <li>ddd</li>
+        <li>eee</li>
+        <li>eee</li>
+    </ul>
+</div>
+</body>
+</html>
