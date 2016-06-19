@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function creatPer(name, sex){
+    var obj=new Object();
+    obj.name=name;
+    obj.sex=sex;
+    obj.showName=function ()
+    {
+        alert('My name is : '+ this.name);
+    };
+    obj.showSex=function ()
+    {
+        alert('My sex is : '+ this.sex);
+    };
+    return obj;
+}
+
+var obj=creatPer('adf', 'male');
+obj.showName();
+obj.showSex();
+
+var obj2=creatPer('adaadfa', 'female');
+obj2.showName();
+obj2.showSex();
+
+</script>
+</head>
+
+<body>
+</body>
+
+</html>
