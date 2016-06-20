@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+<script>
+function CreatPerson(name, qq)
+{
+    this.name=name;
+    this.qq=qq;
+}
+CreatPerson.prototype.showName=function ()
+{
+    alert('My name is : '+ this.name);
+}
+CreatPerson.prototype.showqq=function ()
+{
+    alert('My QQ is : '+ this.qq);
+}
+
+var obj1=new CreatPerson('MKI', '55343');
+var obj2=new CreatPerson('KDFJ', '14543232')
+
+obj1.showName();
+obj1.showqq();
+</script>
+</head>
+
+<body>
+</body>
+
+</html>
