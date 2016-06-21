@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#div1 div {background-color:silver; width:200px; height:200px; display:none;}
+#div1 input.active {background:yellow;}
+</style>
+<script>
+/* 常规面向过程编程：
+window.onload=function ()
+{
+    var oDiv=document.getElementById('div1');
+    var aInp=oDiv.getElementsByTagName('input');
+    var aDiv=oDiv.getElementsByTagName('div');
+    
+    for(var i=0;i<aInp.length;i++)
+    {   aInp[i].index=i;
+        aInp[i].onclick=function ()
+        { 
+            for(var i=0;i<aInp.length;i++)
+            {
+                aInp[i].className='';
+                aDiv[i].style.display='none';
+            }
+            this.className='active';
+            aDiv[this.index].style.display='block';
+        }
+    }
+}
+*/
+window.onload=function ()
+{
+    new TabSwith('div1');
+}
+
+function TabSwith(id)
+{
+    var _this=this;
+    var oDiv=document.getElementById(id);
+    this.aInp=oDiv.getElementsByTagName('input');
+    this.aDiv=oDiv.getElementsByTagName('div');
+    
+    for(var i=0;i<this.aInp.length;i++)
+    {   this.aInp[i].index=i;
+        this.aInp[i].onclick=function (){
+            _this.fnClick(this);
+        }
+    }
+}
+
+TabSwith.prototype.fnClick=function (oBtn)
+{ 
+    for(var i=0;i<this.aInp.length;i++)
+    {
+        this.aInp[i].className='';
+        this.aDiv[i].style.display='none';
+    }
+    oBtn.className='active';
+    this.aDiv[oBtn.index].style.display='block';
+}
+</script>
+</head>
+
+<body>
+<div id='div1'>
+    <input class='active' type='button' value='Food'></input>
+    <input type='button' value='Play'></input>
+    <input type='button' value='Fun'></input>
+
+    <div style="display:block">adfgadfa</div>
+    <div>afdgdfag</div>
+    <div>hghdtshdtgh</div>
+</div>
+</body>
+
+</html>
