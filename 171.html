@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+<style>
+#div1 {
+  width: 250px;
+}
+#div2 {
+  width:200px;
+  height:100px;
+  background-color: gray;
+  color: white;
+}
+</style>
+<script>
+window.onload=function (){
+  var oDiv=document.getElementById('div1');    // 获取ID，兼容低版本FF；
+  var oDiv2=document.getElementById('div2');   // 定义变量，方便重用；
+  oDiv.onmouseover=function (){                // 结合事件及函数实现功能；
+    oDiv2.style.display='block';
+  }
+  oDiv.onmouseout=function (){
+    oDiv2.style.display='none';
+  }
+}
+</script>
+</head>
+
+<body>
+<div id='div1'>
+  <input id='check' type='checkbox' /> 两周内免登陆
+</div>
+<div id='div2'>
+  为了您的信息安全，不要在网吧或者公共电脑上使用此功能哦
+</div>
+</body>
+</html>

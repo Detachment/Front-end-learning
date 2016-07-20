@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+    </style>
+    <script>
+        window.onload=function (){
+            var oInp=document.getElementById('input');
+            var oAdd=document.getElementById('add');
+            var oDel=document.getElementById('del');
+            var oUl=document.getElementById('ul1');
+            var aLi=oUl.getElementsByTagName('li');
+
+            oAdd.onclick=function (){
+                oLi=document.createElement('li');
+                oLi.innerHTML=oInp.value;
+                if(aLi.length>0){
+                    oUl.insertBefore(oLi, aLi[0]);
+                    oInp.value='';
+                }
+                else {
+                    oUl.appendChild(oLi);
+                    oInp.value='';
+                }
+            }
+
+            oDel.onclick=function (){
+                if(aLi.length==0){
+                    alert('There is nothing to delete, ohhh~')
+                }
+                else {
+                    oUl.removeChild(aLi[aLi.length-1]);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id='input' type="text" placeholder="Enter something interesting~"/>
+    <input id='add' type="button" value="Add" />
+    <input id='del' type="button" value="Del" />
+    <ul id='ul1' ></ul>
+</body>
+</html>

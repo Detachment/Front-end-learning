@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {font-size: 50px; background: black; color: white; }
+        p {text-align: center; margin: 300px auto 50px; font-family: times; font-size: 15px; }
+        a {text-decoration: none; color: #ccc; }
+        div { width: 400px; margin: 0 auto; }
+    </style>
+    <script>
+        function toStr(n){
+            if(n<10){
+                return '0'+n;
+            }
+            else {
+                return ''+n;
+            }
+        }
+
+        window.onload=function (){
+            var oDiv=document.getElementById('clock');
+            var aImg=oDiv.getElementsByTagName('img');
+
+            function timer(){
+                var oDate=new Date();
+                var str=toStr(oDate.getHours())+toStr(oDate.getMinutes())+toStr(oDate.getSeconds());
+                for(var i=0;i<aImg.length;i++){
+                    aImg[i].src='http://o9ybnkuir.bkt.clouddn.com/javascript09/'+str.charAt(i)+'.png';
+                };
+            };
+
+            setInterval(timer,1000);
+            timer();
+        }
+    </script>
+
+<body>
+    <p><img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/title.png" /></p>
+    <div id='clock'>
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/0.png" />
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/1.png" />
+        :
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/2.png" />
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/3.png" />
+        :
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/4.png" />
+        <img src="http://o9ybnkuir.bkt.clouddn.com/javascript09/5.png" />
+    </div>
+    <p><a href="http://detachment.club/">Powered By Detachment's Blog.</a></p>
+</body>
+</html>

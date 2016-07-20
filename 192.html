@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #playbord div {
+            float: left;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+        }
+        #playbord {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+        }
+        #enter {
+            width: 230px;
+            margin: 60px auto;
+        }
+
+    </style>
+    <script>
+        window.onload=function (ev){
+            var oInp=document.getElementById('input');
+            var oBtn=document.getElementById('btn');
+            var oPlay=document.getElementById('playbord');
+            var aRus=[];
+
+            function tab(ev){
+                aRus=oInp.value.split('');
+
+                if(aRus.length>0){
+                    for(var i=0;i<aRus.length;i++){
+                        var oDiv=document.createElement('div');
+                        oDiv.innerHTML=aRus[i]+' ';
+                        oPlay.appendChild(oDiv);
+                    };
+                    document.onmousemove=function (ev){
+                        var oEvent=event||ev;
+                        var aDiv=oPlay.children;
+                        for(var i=aDiv.length-1;i>0;i--){
+                            aDiv[i].style.left=aDiv[i-1].offsetLeft+15+'px';
+                            aDiv[i].style.top=aDiv[i-1].offsetTop+'px';
+                        }
+                        aDiv[0].style.left=oEvent.clientX+'px';
+                        aDiv[0].style.top=oEvent.clientY+'px';
+                    }
+                }
+                else {
+                    alert('Please Enter Something First~')
+                }
+
+            };
+
+            oBtn.onclick=function (){
+                tab(ev);
+            };
+
+            document.onkeydown=function (ev){
+                var oEvent=event||ev;
+                if(oEvent.keyCode==13){
+                    tab(ev);
+                };
+            };
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id='enter'>
+        <input id='input' type="text" placeholder="Enter your telephone number or your QQ" />
+        <input id='btn' type='button' value="Enter" />
+    </div>
+    <div id='playbord'></div>
+</body>
+</html>

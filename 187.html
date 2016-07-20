@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+    <style>
+        * {margin: 0; padding: 0; }
+        #test1 {
+            top: 10px;
+            left: 50%;
+            position: fixed;
+        }
+        #target1 {
+            width: 1px;
+            height: 100%;
+            background: black;
+            position: fixed;
+            left: 500px;
+         }
+         #target2 {
+             width: 1px;
+             height: 100%;
+             background: black;
+             position: fixed;
+             left: 800px;
+          }
+         #move {
+             width: 100px;
+             height: 100px;
+             position: relative;
+             left: 0px;
+             top: 415px;
+             background: red;
+         }
+         #scroll {
+             width: 10px;
+             height: 100px;
+             background: blue;
+             position: absolute;
+             right: 0;
+             bottom:415px;
+         }
+    </style>
+    <script>
+        // function for the uniform movement:
+        var timer;
+        function move1(iTarget){
+            var oMove=document.getElementById('move');
+            var speed=0;
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+                if(oMove.offsetLeft<iTarget){
+                    speed=7;
+                }
+                else {
+                    speed=-7;
+                }
+
+                var n1=Math.abs(oMove.offsetLeft-iTarget);
+                var n2=Math.abs(speed);
+                if(n1<n2){
+                    clearInterval(timer);
+                    oMove.style.left=iTarget+'px';
+                }
+                else {
+                    oMove.style.left=oMove.offsetLeft+speed+'px';
+                }
+            },30)
+        };
+
+        // function for the variable movement:
+        window.onscroll=function (){
+            var oScroll=document.getElementById('scroll');
+            var oMove=document.getElementById('move');
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            //oScroll.style.top=(document.documentElement.clientHeight-oScroll.offsetHeight)/2+scrollTop+'px';
+
+            move2(oMove, parseInt((document.documentElement.clientHeight-oMove.offsetHeight)/2)+scrollTop);
+            //move2(oScroll, parseInt((document.documentElement.clientHeight-oScroll.offsetHeight)/2)+scrollTop);
+
+        };
+
+        var timer2=null;
+        function move2(obj, iGoal){
+            //var oScroll=document.getElementById('scroll');
+
+            clearInterval(timer2);
+            timer2=setInterval(function(){
+                var speed=(iGoal-obj.offsetTop)/4;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                if(iGoal==obj.offsetTop){
+                    clearInterval(timer2);
+                }
+                else {
+                    obj.style.top=obj.offsetTop+speed+'px';
+                }
+            },30)
+        }
+
+    </script>
+</head>
+
+<body style="height:1500px;">
+    <div id='test1'>
+        <input id='to500' type="button" value="To 500" onclick="move1(500)" />
+        <input id='to800' type="button" value="To 800" onclick="move1(800)" />
+    </div>
+    <div id="target1"></div>
+    <div id="target2"></div>
+    <div id='move'></div>
+<!--    <div id="scroll"></div> -->
+</body>
+</html>

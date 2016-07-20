@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(123, 234, 123);
+        }
+    </style>
+    <script>
+        function setStyle(name, value){
+            var oDiv=document.getElementById('div1');
+            oDiv.style[name]=value;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="Wider" onclick="setStyle('width', '200px')" />
+    <input type="button" value="Heiger" onclick="setStyle('height', '200px')"/>
+    <input type="button" value="Green" onclick="setStyle('background', 'green')" />
+    <div id='div1'></div>
+</body>
+</html>

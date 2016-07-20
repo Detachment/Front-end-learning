@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            background:rgb(55, 55, 120);;
+        }
+        .container {
+            width: 800px;
+            margin: 10px auto;
+            background: rgb(255, 255, 205);
+            position: relative;
+            padding-bottom: 1px;
+        }
+        .container .big {
+            position: relative;
+            overflow: hidden;
+            width: 800px;
+            height: 500px;
+        }
+        .container .small {
+            position: relative;
+            overflow: hidden;
+            width: 790px;
+            height: 140px;
+            margin: 10px auto 10px;
+        }
+        .container .big .bigPictures {
+            position: relative;
+            z-index: 1;
+        }
+        .container .small .smallPictures {
+            position:  relative;
+        }
+        .container .big .left {
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 3000;
+        }
+        .container .big .left img {
+            width: 100px;
+            position: relative;
+            left: 10px;
+            top: 200px;
+            opacity: 0;
+            filter: alpha(opacity:0);
+        }
+        .container .big .right {
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 3000;
+        }
+        .container .big .right img {
+            width: 100px;
+            position: relative;
+            left: 290px;
+            top: 200px;
+            opacity: 0;
+            filter: alpha(opacity:0);
+        }
+        ul li {
+            list-style-type: none;
+            float: left;
+        }
+        .smallPictures li {
+            margin: 0 5px;
+            opacity: 0.6;
+            filter: alpha(opacity:60);
+        }
+        .bigPictures img {
+            width: 800px;
+            height: 500px;
+        }
+        .smallPictures img {
+            width: 253px;
+            height: auto;
+        }
+
+    </style>
+    <script src="http://o9ybnkuir.bkt.clouddn.com/javascript18/move.js" ></script>
+    <script>
+        function getByClass(name){
+            var aResult=[];
+            var aObj=document.getElementsByTagName('*');
+            for(var i=0;i<aObj.length;i++){
+                if(aObj[i].className==name){
+                    aResult.push(aObj[i]);
+                }
+            }
+            return aResult;
+        }
+
+        window.onload=function (){
+            var oCon=getByClass('container')[0];
+            var oLeft=getByClass('left')[0];
+            var oRight=getByClass('right')[0];
+            var oPreview=getByClass('preview')[0];
+            var oNext=getByClass('next')[0];
+            var oSmall=getByClass('smallPictures')[0];
+            var aSmallLi=oSmall.getElementsByTagName('li');
+            var oBig=getByClass('bigPictures')[0];
+            var aBigLi=oBig.getElementsByTagName('li');
+            var aBigImg=oBig.getElementsByTagName('img');
+            var aSmallImg=oSmall.getElementsByTagName('img');
+            var now=0;
+
+
+            // function 1: Show the preview and next button when move the mouse over and out;
+            oLeft.onmouseover=function (){
+                move(oPreview, 'opacity', 100);
+            };
+            oLeft.onmouseout=function (){
+                move(oPreview, 'opacity', 0);
+            };
+
+            oRight.onmouseover=function (){
+                move(oNext, 'opacity', 100);
+            };
+            oRight.onmouseout=function (){
+                move(oNext, 'opacity', 0);
+            }
+
+            // function 2: Change the view of the big pictures when click the small pictures:
+            oBig.style.height=aBigLi.length*aBigImg[0].offsetHeight+'px';
+            oSmall.style.width=aSmallLi.length*(aSmallImg[0].offsetWidth+10)+'px';
+
+            function tab(){
+                var s=-now*(aBigImg[0].offsetHeight+5);
+                move(oBig, 'top', s);
+
+                // function 3: Scroll the small pictures whice is choosen to the center:
+                if(now==1||now==0){
+                    move(oSmall, 'left', 0);
+                }
+                else if (now==aSmallLi.length-1){
+                    var t1=-(now-2)*(aSmallImg[0].offsetWidth+10);
+                    move(oSmall, 'left', t1);
+                }
+                else {
+                    var t2=-(now-1)*(aSmallImg[0].offsetWidth+10);
+                    move(oSmall, 'left', t2);
+                }
+            }
+
+            for(var i=0;i<aSmallLi.length;i++){
+                aSmallLi[i].index=i;
+                aSmallLi[i].onclick=function (){
+                    now=this.index;
+                    tab();
+                }
+            }
+
+            // function 4: Use the preview and next bottom to control the progress:
+             oLeft.onclick=function (){
+                 if(now==0){
+                     now=aSmallLi.length-1;
+                     tab();
+                 }
+                 else {
+                     now--;
+                     tab();
+                 }
+
+                 for(var i=0;i<aSmallLi.length;i++){
+                    move(aSmallLi[i], 'opacity', '60');
+                    //aSmallLi[i].style.opacity=0.6;
+                 };
+                 move(aSmallLi[now], 'opacity', '100');
+                 //aSmallLi[now].style.opacity=1;
+             };
+             oRight.onclick=function (){
+                 if(now==aSmallLi.length-1){
+                     now=0;
+                     tab();
+                 }
+                 else {
+                     now++;
+                     tab();
+                 }
+
+                 for(var i=0;i<aSmallLi.length;i++){
+                     move(aSmallLi[i], 'opacity', '60');
+                     //aSmallLi[i].style.opacity=0.6;
+                 };
+                 move(aSmallLi[now], 'opacity', '100');
+                 //aSmallLi[now].style.opacity=1;
+             };
+
+             // function 5: Change the opacity of the small images when it is chosen:
+             for(var i=0;i<aSmallLi.length;i++){
+                 aSmallLi[i].index=i;
+                 aSmallLi[i].onmouseover=function (){
+                     for(var i=0;i<aSmallLi.length;i++){
+                         move(aSmallLi[i], 'opacity', '60');
+                         //aSmallLi[i].style.opacity=0.6;
+                     }
+                     move(aSmallLi[this.index], 'opacity', '100');
+                     //aSmallLi[this.index].style.opacity=1;
+                 }
+                 aSmallLi[i].onmouseout=function (){
+                     if(this.index==now){
+                         move(aSmallLi[now], 'opacity', '100');
+                         //aSmallLi[now].style.opacity=1;
+                     }
+                     else {
+                         move(aSmallLi[now], 'opacity', '100');
+                         //aSmallLi[now].style.opacity=1;
+                         move(aSmallLi[this.index], 'opacity', '60');
+                         //aSmallLi[this.index].style.opacity=0.6;
+                     }
+                 }
+             }
+
+            // function 6: Auto play:
+             var timer=null;
+             timer=setInterval(oRight.onclick, 5000);
+             oCon.onmouseover=function (){
+                 clearInterval(timer);
+             }
+             oCon.onmouseout=function (){
+                 timer=setInterval(oRight.onclick, 5000);
+             };
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="big">
+            <div class="left">
+                <a href='javascript:;'><img class='preview' src="http://o9ybnkuir.bkt.clouddn.com/javascript18/left.jpg" /></a>
+            </div>
+            <div class="right">
+                <a href='javascript:;'><img class='next' src="http://o9ybnkuir.bkt.clouddn.com/javascript18/right.jpg" /></a>
+            </div>
+            <ul class="bigPictures">
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/1.jpg" /></li>
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/2.jpg" /></li>
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/3.jpg" /></li>
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/4.jpg" /></li>
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/5.jpg" /></li>
+                <li><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/6.jpg" /></li>
+            </ul>
+        </div>
+        <div class="small">
+            <ul class="smallPictures">
+                <li style="opacity:1; "><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/1.jpg" /></a></li>
+                <li><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/2.jpg" /></a></li>
+                <li><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/3.jpg" /></a></li>
+                <li><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/4.jpg" /></a></li>
+                <li><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/5.jpg" /></a></li>
+                <li><a href='javascript:;'><img src="http://o9ybnkuir.bkt.clouddn.com/javascript18/6.jpg" /></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

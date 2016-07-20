@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #move {
+            width: 712px;
+            height: 108px;
+            background-color: #ccc;
+            position: relative;
+            margin: 200px auto 0;
+            overflow: hidden;
+        }
+        #move ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #move ul li {
+            list-style: none;
+            float: left;
+        }
+        #control {
+            width:190px;
+            margin: 20px auto;
+        }
+        #control input {
+            margin-left: 30px;
+            width: 50px;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oMove=document.getElementById('move');
+            var oUl=oMove.getElementsByTagName('ul')[0];
+            var aLi=oUl.getElementsByTagName('li');
+            var oCtr=document.getElementById('control');
+            var oLeft=document.getElementById('left');
+            var oRight=document.getElementById('right');
+            var speed=null;
+
+            oUl.innerHTML+=oUl.innerHTML;
+            oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+
+            oLeft.onclick=function (){
+                return speed=-4;
+            }
+            oRight.onclick=function (){
+                return speed=4;
+            }
+
+            function move(){
+                if(oUl.offsetLeft<-oUl.offsetWidth/2){
+                    oUl.style.left='0';
+                }
+                if(oUl.offsetLeft>0){
+                    oUl.style.left=-oUl.offsetWidth/2+'px';
+                }
+                oUl.style.left=oUl.offsetLeft+speed+'px';
+            }
+
+            var timer=setInterval(move, 30);
+
+            oMove.onmouseover=function (){
+                clearInterval(timer);
+            };
+            oMove.onmouseout=function (){
+                timer=setInterval(move, 30);
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <div id='move'>
+        <ul>
+            <li><img src='http://o9ybnkuir.bkt.clouddn.com/javascript10/1.jpg' /></li>
+            <li><img src='http://o9ybnkuir.bkt.clouddn.com/javascript10/2.jpg' /></li>
+            <li><img src='http://o9ybnkuir.bkt.clouddn.com/javascript10/3.jpg' /></li>
+            <li><img src='http://o9ybnkuir.bkt.clouddn.com/javascript10/4.jpg' /></li>
+        </ul>
+    </div>
+    <div id='control'>
+        <input id='left' type="button" value="Left" />
+        <input id='right' type="button" value="Right" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    </style>
+    <script>
+        window.onload=function (){
+            var oInp=document.getElementById('inp');
+            var oBtn=document.getElementById('btn');
+            var oOut=document.getElementById('out');
+            oBtn.onclick=function (){
+                var n1=parseInt(oInp.value);
+                if(isNaN(n1)){
+                    alert('Dont lie to me, the inputed is not a number!');
+                }
+                else {
+                    oOut.value=parseInt(n1/60)+' \' '+n1%60+' \"';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>Transform seconds to minutes.</p>
+    <input id='inp' type="text" placeholder='Enter a number of seconds' />
+    <input id="btn" type="button" value="Transform" />
+    <input id="out" type="text" />
+</body>
+</html>

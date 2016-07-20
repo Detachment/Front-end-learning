@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+    <style>
+        * {padding: 0; margin: 0; }
+        div {
+            width: 420px;
+            border: 1px dashed black;
+            margin: 100px auto;
+            filter: alpha(opacity:50);
+            opacity: 0.5;
+        }
+        div img {
+            width: 400px;
+            height: auto;
+            padding: 10px 10px 5px;
+
+         }
+    </style>
+    <script>
+        window.onload=function (){
+            var oDiv=document.getElementById('div1');
+            oDiv.onmouseover=function (){
+                move(100);
+            };
+            oDiv.onmouseout=function (){
+                move(50);
+            };
+
+            var timer=null;
+            var alpha=50;
+            function move(target){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    var speed;
+                    if(alpha<target){
+                        speed=5;
+                    }
+                    else {
+                        speed=-5;
+                    }
+
+                    if(target==alpha){
+                        clearInterval(timer);
+                    }
+                    else {
+                        alpha+=speed;
+                        oDiv.style.filter='alpha(opacity:'+alpha+')';
+                        oDiv.style.opacity=alpha/100;
+                    }
+                }, 30)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id='div1' >
+        <img src='http://o9ybnkuir.bkt.clouddn.com/javascript15/sjtu.jpg' />
+    </div>
+</body>
+</html>

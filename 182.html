@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    </style>
+    <script>
+        function getClass(oParent, sClass){
+            var aEl=oParent.getElementsByTagName('*');
+            var aResult=[];
+            for(var i=0;i<aEl.length;i++){
+                if(aEl[i].className==sClass){
+                    aResult.push(aEl[i]);
+                }
+            }
+            return aResult;
+        }
+
+        window.onload=function (){
+            var oUl=document.getElementById('ul1');
+            var aRed=getClass(oUl, 'green');
+            for(var i=0;i<aRed.length;i++){
+                aRed[i].style.background='green';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <ul id='ul1'>
+        <li class="red">This is the fitst line.</li>
+        <li class='green'>This is the second line.</li>
+        <li>This is the third line.</li>
+        <li class="red">This is the fourth line.</li>
+        <li class="green">This is the fifth line.</li>
+        <li class="red">This is the sixth line.</li>
+    </ul>
+</body>
+</html>

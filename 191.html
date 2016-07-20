@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #div {
+            width: 200px;
+            height: 200px;
+            background: rgb(255, 0, 0);
+            border: 0px solid black;
+        }
+    </style>
+    <script src="http://o9ybnkuir.bkt.clouddn.com/javascript19/move2.js" ></script>
+    <script>
+    window.onload=function (){
+        var oDiv=document.getElementById('div');
+        oDiv.onmouseover=function (){
+            move(oDiv, {width: 400, height:210, borderWidth:2});
+        };
+        oDiv.onmouseout=function (){
+            move(oDiv, {width: 200, height:200, borderWidth:0});
+        };
+    }
+    </script>
+</head>
+
+<body>
+    <div id='div' ></div>
+</body>
+</html>

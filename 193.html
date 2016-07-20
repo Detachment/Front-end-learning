@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: rgb(255, 0, 0);
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oDiv=document.getElementById('move');
+
+            oDiv.onmousedown=function (ev){
+                var oEvent=event||ev;
+                var disX=oEvent.clientX-oDiv.offsetLeft;
+                var disY=oEvent.clientY-oDiv.offsetTop;
+
+                document.onmousemove=function (ev){
+                    var oEvent=event||ev;
+                    var h=oEvent.clientX-disX;
+                    var v=oEvent.clientY-disY;
+
+                    if(h<0){
+                        h=0;
+                    }
+                    else if(h>document.documentElement.clientWidth-oDiv.offsetWidth){
+                        h=document.documentElement.clientWidth-oDiv.offsetWidth;
+                    };
+
+                    if(v<0){
+                        v=0;
+                    }
+                    else if(v>document.documentElement.clientHeight-oDiv.offsetHeight){
+                        v=document.documentElement.clientHeight-oDiv.offsetHeight;
+                    };
+
+                    oDiv.style.left=h+'px';
+                    oDiv.style.top=v+'px';
+                };
+                document.onmouseup=function (){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                };
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id='move'></div>
+</body>
+</html>

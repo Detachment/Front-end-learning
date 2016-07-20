@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <style>
+        * {margin: 0px; padding: 0px; }
+        div {
+            width: 500px;
+            margin: 100px auto 30px;
+        }
+        div #target {
+            margin-left: 30px;
+            margin-top: 10px;
+            width: 250px;
+        }
+        table {
+            margin: 0 auto;
+        }
+        table, td {
+            border: 1px solid black;
+            width: 400px;
+            border-collapse: collapse;
+            text-align: center;
+         }
+         thead {
+             font-weight: bold;
+         }
+         a {
+             text-decoration: none;
+             font-family: times;
+          }
+         form {
+             display: inline;
+         }
+    </style>
+    <script>
+        window.onload=function (){
+            var oTab=document.getElementById('tab');
+            var aRows=oTab.rows;
+            var oBtn=document.getElementById('add');
+            var sName=document.getElementById('name');
+            var sAge=document.getElementById('age');
+            var oSearch=document.getElementById('search');
+            var sTarget=document.getElementById('target');
+            var n=aRows.length;
+            var oldColor;
+
+            function tabBackground(){
+                // alert(aRows.length);
+                // function 1: Different color in different rows;
+                for(var i=0;i<aRows.length;i++){
+                    // alert(aRows.length)
+                    if(i%2){
+                        aRows[i].style.background='';
+                    }
+                    else {
+                        aRows[i].style.background='#ccc';
+                    }
+                };
+
+                // function 2: Hightlight when it is chosen:
+                for(var i=1;i<aRows.length;i++){
+                        aRows[i].onmouseover=function (){
+                            oldColor=this.style.background;
+                            this.style.background='rgb(24,123,34)';
+                        };
+                        aRows[i].onmouseout=function (){
+                            this.style.background=oldColor;
+                            tabBackground();
+                        };
+                    }
+            }
+
+            tabBackground();
+
+            // function 3: Add rows:
+            oBtn.onclick=function (){
+                var oRow=document.createElement('tr');
+
+                var oCell=document.createElement('td');
+
+                oCell.innerHTML=n++;
+                oRow.appendChild(oCell);
+
+                var oCell=document.createElement('td');
+                oCell.innerHTML=sName.value;
+                oRow.appendChild(oCell);
+
+                var oCell=document.createElement('td');
+                oCell.innerHTML=sAge.value;
+                oRow.appendChild(oCell);
+
+                var oCell=document.createElement('td');
+                oCell.innerHTML='<a href="JavaScript:;">delete</a>';
+                oRow.appendChild(oCell);
+
+                oTab.appendChild(oRow);
+
+                var aDel=document.getElementsByTagName('a');
+
+                // function 4: Delete rows:
+                for(var i=0;i<aDel.length;i++){
+                    aDel[i].onclick=function (){
+                        oTab.removeChild(this.parentNode.parentNode);
+                    };
+                };
+
+                tabBackground();
+
+            };
+
+            // function 5: Search
+            oSearch.onclick=function (){
+                for(var i=1;i<aRows.length;i++){
+                    var sTarget1=sTarget.value.toLowerCase();
+                    var sTab=oTab.rows[i].cells[1].innerHTML.toLowerCase();
+
+                    if(sTab.search(sTarget1)!=-1){
+                        oTab.rows[i].style.background='rgb(123,124,56)'
+                    }
+                    else {
+                        oTab.rows[i].style.background='';
+                    }
+                };
+            };
+
+            // function 6: Sort by the option:
+            var oSort=document.getElementById('sort');
+            var oGoal=document.getElementById('goal');
+            oSort.onclick=function (){
+                var arr=[];
+                // Use a function to get the cells number that to be sortd with:
+                function line(){
+                    for(var i=0;i<oGoal.children.length;i++){
+                        if(oGoal.children[i].selected==true){
+                            var gist=oGoal.children[i]['value']
+                            for(var j=0;j<oTab.rows[0].cells.length;j++){
+                                if(oTab.rows[0].cells[j].innerHTML==gist){
+                                    return j;
+                                };
+                            };
+                        };
+                    };
+                };
+
+                for(var i=1;i<oTab.rows.length;i++){
+                    arr[i]=oTab.rows[i];
+                };
+                arr.sort(function (tr1,tr2){
+                        var s=line();
+                        var n1=tr1.cells[s].innerHTML;
+                        var n2=tr2.cells[s].innerHTML;
+                        return n1-n2;
+                })
+                for(var i=0;i<oTab.rows.length-1;i++){
+                    oTab.appendChild(arr[i])
+                }
+
+                tabBackground();
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id='ctr'>
+        NANE:<input id="name" type="text" placeholder="Please enter your name~"/>
+        AGE:<input id="age" type="text" placeholder="Please enter your age~" />
+        <input id="add" type="button" value="Add" /><br />
+        <input id="target" type="text" placeholder="Put in the name you want to search~" />
+        <input id="search" type="button" value="Search"  />
+        <form>
+            <select id='goal' name='item'>
+                <option value="Name">Name</option>
+                <option value="Age" >Age</option>
+                <option value="Num" >Num</option>
+            </select>
+            <input id='sort' type="button" value="SORT" />
+        </form>
+
+    </div>
+
+    <table id='tab'>
+        <tHead>
+            <td>Num</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Set</td>
+        </tHead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Tom</td>
+                <td>22</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>John</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Jack</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

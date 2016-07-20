@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {margin: 0px; padding: 0px;}
+        body {font-family: arial; }
+        .calendar {
+            width: 280px;
+            background: #ccc;
+            margin: 100px auto;
+            border: 1px solid black;
+            padding: 12px 10px 20px 30px;
+        }
+        .calendar ul {
+            width: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .calendar li {
+            list-style: none;
+            float: left;
+            width: 78px;
+            height: 72px;
+            background: #fff;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid black;
+            margin: 10px 10px 0 0;
+            padding-top: 6px;
+        }
+        .content {
+            width: 240px;
+            background:  #f1f1f1;
+            padding: 10px;
+        }
+        h2 {font-size: 20px;margin-bottom: 10px;}
+        p {font-size: 16px;}
+        .calendar .active {
+            background: #424242;
+            color: #e84a7e;
+            border: 1px solid #e84a7e;
+        }
+    </style>
+    <script>
+    window.onload=function (){
+        var arr=[
+            'Terror struck in Paris one week into the New Year ',
+            'A major aviation mystery in 2015 differed ',
+            ' Deaths by Police Officers',
+            'Amtrak Train Crash',
+            'Prison Escape in New York',
+            'Charleston Church Shooting',
+            'On-Air Shooting in Virginia',
+            'Major Murder Trials',
+            'European Refugee Crisis',
+            'Same-Sex Marriage Debate',
+            'Pope Francis Visits the US',
+            'Another Terror Attack in Paris'
+        ]
+        var oDiv=document.getElementById('div1');
+        var oTxt=document.getElementById('text');
+        var aLi=oDiv.getElementsByTagName('li');
+
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onmouseover=function (){
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className='';
+                };
+                this.className='active';
+                oTxt.innerHTML='<h2>'+(this.index+1)+'</h2>'+'<p>'+arr[this.index]+'</p>';
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id='div1' class='calendar'>
+        <ul>
+            <li class="active"><h1>1</h1><p>Jan</p></li>
+            <li><h1>2</h1> <p>Feb</p></li>
+            <li><h1>3</h1><p>Mar</p></li>
+            <li><h1>4</h1><p>Apr</p></li>
+            <li><h1>5</h1><p>May</p></li>
+            <li><h1>6</h1><p>Jun</p></li>
+            <li><h1>7</h1><p>Jul</p></li>
+            <li><h1>8</h1><p>Aug</p></li>
+            <li><h1>9</h1><p>Spet</p></li>
+            <li><h1>10</h1><p>Oct</p></li>
+            <li><h1>11</h1><p>Nov</p></li>
+            <li><h1>12</h1><p>Dec</p></li>
+        </ul>
+        <div id='text' class='content'>
+            <h2>1</h2><p>Terror struck in Paris one week into the New Year</p>
+        </div>
+    </div>
+</body>
+</html>

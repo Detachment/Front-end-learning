@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #div1 input {display: block; margin: 20px; }
+    </style>
+    <script>
+        window.onload=function (){
+            var oBtn1=document.getElementById('btn1');
+            var oBtn2=document.getElementById('btn2');
+            var oBtn3=document.getElementById('btn3');
+            var oDiv=document.getElementById('div1');
+            var aChe=oDiv.getElementsByTagName('input');
+
+            oBtn1.onclick=function (){
+                for(var i=0;i<aChe.length;i++){
+                    aChe[i].checked=true;
+                }
+            };
+            oBtn2.onclick=function (){
+                for(var i=0;i<aChe.length;i++){
+                    aChe[i].checked=false;
+                }
+            };
+            oBtn3.onclick=function (){
+                for(var i=0;i<aChe.length;i++){
+                    if(aChe[i].checked){
+                        aChe[i].checked=false;
+                    }
+                    else {
+                        aChe[i].checked=true;
+                    }
+                };
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <input id='btn1' type="button" value='Select All' />
+    <input id='btn2' type="button" value='Select Nothing' />
+    <input id='btn3' type="button" value='Opposite Select' />
+    <div id='div1'>
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="checkbox" />
+    </div>
+</body>

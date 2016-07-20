@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: rgb(0, 0, 143);
+            float: left;
+            margin-left: 50px;
+        }
+    </style>
+    <script>
+    window.onload=function (){
+        var aDiv=document.getElementsByTagName('div');
+        //alert(getStyle(aDiv[0], 'height'));
+        aDiv[0].onmouseover=function (){
+            move(this, "width", 400);
+        };
+        aDiv[0].onmouseout=function (){
+            move(this, "width", 200);
+        };
+
+        aDiv[1].onmouseover=function (){
+            move(aDiv[1], "height", 400);
+        };
+        aDiv[1].onmouseout=function (){
+            move(aDiv[1], "height", 200);   // Tips: we can use "this" or the specific object here~
+        };
+
+        aDiv[2].onmouseover=function (){
+            move(this, "opacity", 30);
+        };
+        aDiv[2].onmouseout=function (){
+            move(this, "opacity", 100);
+        };
+
+    }
+
+        // function 1: Get the value of a style in the css:
+        function getStyle(obj, attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            }
+            else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+
+        // function 2: Bulild a perfect movement franmework:
+        function move(obj, attr, target){
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur=0;
+                if (attr=='opacity') {
+                    cur=Math.round(parseFloat(getStyle(obj, attr))*100);
+                }
+                else {
+                    cur=parseInt(getStyle(obj, attr));      // Attention: if without parseInt(), something would go wrong with the function!
+                }
+
+                var speed=(target-cur)/6;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                if (target==cur) {
+                    clearInterval(obj.timer);
+                }
+                else {
+                    if(attr=='opacity'){
+                        obj.style.filter='alpha(opacity:'+(cur+speed)+')' ;
+                        obj.style.opacity=(cur+speed)/100;  // Attention: Used in the modern brower, we should divide it by  100;
+                    }
+                    else {
+                        obj.style[attr]=cur+speed+'px';
+                    }
+                }
+            },30)
+        }
+
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
