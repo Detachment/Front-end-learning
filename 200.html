@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+    <script>
+        window.onload=function (){
+            var oBtn=document.getElementById('btn');
+            var oText=document.getElementById('input');
+
+            oBtn.onclick=function (){                
+                var sResult=confirm("You want to process the project?");
+                if(sResult){
+                    var blank=window.open('about:blank', '_blank');
+                    blank.document.write(oText.value);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <textarea id='input' rows="10" cols="40" /></textarea>
+    <input id='btn' type='button' value="Process" />
+</body>
+</html>

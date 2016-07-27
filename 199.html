@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+        #div {
+            background: rgb(255, 0, 0);
+        }
+        #div1 {
+            background: rgb(0, 255, 0);
+        }
+    </style>
+    <script src="D:\Personal\Desktop\w3school\drag.js" ></script>
+    <script src="D:\Personal\Desktop\w3school\Newdrag.js" ></script>
+    <script>
+        window.onload=function (){
+            new Drag('div');
+            new newDrag('div1');
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id='div'></div>
+    <div id='div1'></div>
+</body>
+</html>

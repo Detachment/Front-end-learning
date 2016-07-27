@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+    <script>
+        function CreateObj(name, age){
+            this.name=name;
+            this.age=age;
+        };
+
+        CreateObj.prototype.showname=function (){
+            alert('My name is: '+ this.name);
+        };
+        CreateObj.prototype.showage=function (){
+            alert('My age is: '+ this.age);
+        };
+
+        var obj1=new CreateObj('ZY', '233');
+        obj1.showname();
+        obj1.showage();
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

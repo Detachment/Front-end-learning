@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 800px;
+            height: 600px;
+            background: rgb(223, 234, 223);
+            position: relative;
+        }
+        #content {
+            width: 100px;
+            height: 100px;
+            background: rgb(255, 0, 0);
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oContainer=document.getElementById('container');
+            var oContext=document.getElementById('content');
+
+            function addEvent(obj, ev, fn){
+                if(obj.attachEvent){
+                    obj.attachEvent('on'+ev, fn);
+                }
+                else {
+                    obj.addEventListener(ev, fn, false);
+                }
+            };
+
+            addEvent(oContext, 'click', function (){
+                alert('Hello~');
+            });
+            addEvent(oContext, 'click', function (){
+                alert('Hello again~');
+            });
+            
+            // An old way to add events on the object:
+/*
+            if(oContext.attachEvent){
+                oContext.attachEvent('onclick', function (){
+                    alert('Hello!');
+                });
+                oContext.attachEvent('onclick', function (){
+                    alert('Hello again!');
+                });
+            }
+            else {
+                oContext.addEventListener('click', function (){
+                    alert('Hello!');
+                }, false);
+                oContext.addEventListener('click', function (){
+                    alert('Hello again!');
+                }, false);
+            }
+*/
+
+            oContext.onmousedown=function (ev){
+                var oEvent=event||ev;
+                var disX=oEvent.clientX-oContext.offsetLeft;
+                var disY=oEvent.clientY-oContext.offsetTop;
+
+                function mouseMove(ev){
+                    var oEvent=event||ev;
+                    var h=oEvent.clientX-disX;
+                    var v=oEvent.clientY-disY;
+
+                    if(h<20){
+                        h=0;
+                    }
+                    else if(h>oContainer.offsetWidth-oContext.offsetWidth-20){
+                        h=oContainer.offsetWidth-oContext.offsetWidth;
+                    };
+
+                    if(v<20){
+                        v=0;
+                    }
+                    else if(v>oContainer.offsetHeight-oContext.offsetHeight-20){
+                        v=oContainer.offsetHeight-oContext.offsetHeight;
+                    };
+
+                    oContext.style.left=h+'px';
+                    oContext.style.top=v+'px';
+                };
+                function mouseUp(){
+                    this.onmousemove=null;
+                    this.onmouseup=null;
+                    if(oContext.releaseCapture){
+                        oContext.releaseCapture();
+                    };
+                }
+
+                if(oContext.setCapture){
+                    oContext.onmousemove=mouseMove;
+                    oContext.onmouseup=mouseUp;
+
+                    oContext.setCapture();
+                    return false;
+                }
+                else {
+                    document.onmousemove=mouseMove;
+                    document.onmouseup=mouseUp;
+
+                    return false;
+                };
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id='container'>Get some text around the inner division.
+        <div id='content'>This is just for a test</div>
+        And this is another line of text!
+    </div>
+</body>
+</html>

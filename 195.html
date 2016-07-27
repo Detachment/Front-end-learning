@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #bar {
+            width: 600px;
+            height: 20px;
+            position: relative;
+            margin: 20px auto;
+            background: rgb(255, 234, 234);
+        }
+        #control {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: rgb(255, 0, 0);
+        }
+        .frame {
+            border: 1px dashed blue;
+            position: absolute;
+        }
+        #box {
+            position: absolute;
+            background: rgb(12, 234, 0);
+            width: 0;
+            height: 0;
+        }
+    </style>
+    <script>
+        window.onload=function (){
+            var oBar=document.getElementById('bar');
+            var oControl=document.getElementById('control');
+            var oBox=document.getElementById('box');
+
+            oControl.onmousedown=function (ev){
+                var oEvent=event||ev;
+                var disX=oEvent.clientX-oControl.offsetLeft;
+
+                document.onmousemove=function (ev){
+                    var oEvent=event||ev;
+                    var h=oEvent.clientX-disX;
+                    var scale=1/(oBar.offsetWidth-oControl.offsetWidth);
+
+                    if(h<0){
+                        h=0;
+                    }
+                    else if(h>oBar.offsetWidth-oControl.offsetWidth){
+                        h=oBar.offsetWidth-oControl.offsetWidth;
+                    };
+
+                    oControl.style.left=h+'px';
+
+                    oBox.style.width=oControl.offsetLeft*scale*300+'px';
+                    oBox.style.height=oControl.offsetLeft*scale*300+'px';
+                };
+                document.onmouseup=function (){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                };
+                return false;
+            };
+
+            oBox.onmousedown=function (ev){
+                var oEvent=event||ev;
+                var disX=oEvent.clientX-oBox.offsetLeft;
+                var disY=oEvent.clientY-oBox.offsetTop;
+                var oFrame=document.createElement('div');
+
+                oFrame.style.width=oBox.offsetWidth-2+'px';
+                oFrame.style.height=oBox.offsetHeight-2+'px';
+                oFrame.style.left=oBox.offsetLeft+'px';
+                oFrame.style.top=oBox.offsetTop+'px';
+                oFrame.className='frame';
+                document.body.appendChild(oFrame);
+
+
+                document.onmousemove=function (ev){
+                    var oEvent=event||ev;
+                    var h=oEvent.clientX-disX;
+                    var v=oEvent.clientY-disY;
+
+                    if(h<0){
+                        h=0;
+                    }
+                    else if(h>document.documentElement.clientWidth-oFrame.offsetWidth){
+                        h=document.documentElement.clientWidth-oFrame.offsetWidth;
+                    };
+
+                    if(v<0){
+                        v=0;
+                    }
+                    else if(v>document.documentElement.clientHeight-oFrame.offsetHeight){
+                        v=document.documentElement.clientHeight-oFrame.offsetHeight;
+                    };
+
+                    oFrame.style.left=h+'px';
+                    oFrame.style.top=v+'px';
+                };
+                document.onmouseup=function (){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+
+                    oBox.style.left=oFrame.offsetLeft+'px';
+                    oBox.style.top=oFrame.offsetTop+'px';
+                    document.body.removeChild(oFrame);
+                };
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id='bar'>
+        <div id='control'></div>
+    </div>
+    <div id='box'></div>
+</body>
+</html>

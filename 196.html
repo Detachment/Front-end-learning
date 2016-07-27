@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+    <script>
+        function createObj(name, age){
+            var obj=new Object();
+
+            obj.name=name;
+            obj.age=age;
+            obj.showname=function (){
+                alert('My name is: '+ this.name)
+            };
+            obj.showage=function (){
+                alert('My name is: '+ this.age)
+            };
+
+            return obj;
+        };
+
+        var obj1=createObj('ZhaoYi', '23');
+        obj1.showname();
+        obj1.showage();
+
+        var obj2=createObj('赵四', '23');
+        obj2.showname();
+        obj2.showage();
+
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

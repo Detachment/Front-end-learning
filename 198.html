@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        div {
+            width: 306px;
+            height: 200px;
+            display: none;
+            background: rgb(255, 255, 123);
+            margin-top: 4px;
+        }
+        .active {
+            background: rgb(0, 155, 223);
+        }
+    </style>
+    <script>
+    //    var aInp=null;
+    //    var aDiv=null;
+        window.onload=function (){
+            new TabSwitch();
+        }
+
+        function TabSwitch(){
+            this.aInp=document.getElementsByTagName('input');
+            this.aDiv=document.getElementsByTagName('div');
+            var _this=this;
+
+            for(var i=0;i<this.aInp.length;i++){
+                this.aInp[i].index=i;
+                this.aInp[i].onclick=function (){
+                    _this.fnClick(this);
+                };
+            };
+        };
+
+        TabSwitch.prototype.fnClick=function (oBtn){
+            for(var i=0;i<this.aInp.length;i++){
+                this.aInp[i].className='';
+                this.aDiv[i].style.display='none';
+            };
+            oBtn.className='active';
+            this.aDiv[oBtn.index].style.display='block';
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <input class='active' id='Ed' type="button" value="Education" />
+    <input id='Le' type="button" value="Learning" />
+    <input id='Sh' type="button" value="Shopping" />
+    <input id='Do' type="button" value="Donation" />
+    <div style="display:block; ">Education</div>
+    <div>Learning</div>
+    <div>Shopping</div>
+    <div>Donation</div>
+</body>
+</html>
